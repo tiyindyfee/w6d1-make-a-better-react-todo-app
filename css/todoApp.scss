@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+.list-group-item {
+  span {
+    display: inline-block;
+    margin-left: 20px;
+  }
+}
+
+.text-done {
+  text-decoration: line-through;
+}
