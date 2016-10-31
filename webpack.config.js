@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    todoApp: './js/todoApp.js',
+    todoApp: './js/todoApp.js'
   },
   output: {
     path: './js/',
