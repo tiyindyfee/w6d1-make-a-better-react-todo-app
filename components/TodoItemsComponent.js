@@ -7,10 +7,21 @@ class TodoItemsComponent extends Component {
     this.typing = this.typing.bind(this)
     this.enter = this.enter.bind(this)
     this.markDone = this.markDone.bind(this)
+    this.updatedTodos = this.updatedTodos.bind(this)
 
     this.state = {
       newTodo: '',
       todos: []
+    }
+  }
+
+  componentDidMount() {
+    var localTodos = JSON.parse(localStorage.getItem('todos'))
+
+    if (localTodos) {
+      this.setState({
+        todos: localTodos
+      })
     }
   }
 
@@ -30,9 +41,10 @@ class TodoItemsComponent extends Component {
       })
 
       this.setState({
-        newTodo: '',
-        todos: updatedTodos
+        newTodo: ''
       })
+
+      this.updatedTodos(updatedTodos)
     }
   }
 
@@ -48,9 +60,15 @@ class TodoItemsComponent extends Component {
       updatedTodos[currentTodoIndex].done = false
     }
 
+    this.updatedTodos(updatedTodos)
+  }
+
+  updatedTodos(updatedTodos) {
     this.setState({
       todos: updatedTodos
     })
+
+    localStorage.setItem('todos', JSON.stringify(updatedTodos))
   }
 
   render() {
